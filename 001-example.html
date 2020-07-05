@@ -1,0 +1,27 @@
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<style>
+[style*="-margin:"] {
+  margin: var(--margin-val);
+}
+[style*="--margin:"] {
+  --margin-val: var(--margin);
+}
+@media screen and (max-width: 640px) {
+  [style*="--phone-margin:"] {
+    --margin-val: var(--phone-margin);
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  [style*="--tablet-margin:"] {
+    --margin-val: var(--tablet-margin);
+  }
+}
+</style>
+
+<div style="
+  --margin: 100px;
+  --tablet-margin: 50px;
+  --phone-margin: 25px;
+  border: 1px solid #000000;
+  padding: 10px;
+  ">Hello! Resize the viewport to switch between styles
