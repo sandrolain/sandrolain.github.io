@@ -42,7 +42,7 @@ class Interceptor {
         request = (res instanceof Promise) ? await res : res;
       }
 
-      let response = await fetch(request);
+      let response = await window.fetch(request);
 
       for(const fn of this.responses) {
         const res = fn(response);
@@ -61,7 +61,6 @@ document.getElementById("auth").innerHTML = fakeAuthToken;
 const interc = new Interceptor();
 
 interc.interceptRequest((request) => {
-  // Create a new Request with adding Authorization header
   return new Request(request, {
     headers: {
       "Authorization": `Bearer ${fakeAuthToken}`
@@ -82,14 +81,14 @@ document.getElementById("my-button-1").addEventListener("click", () => {
   interceptedFetch(`https://endjetj6u8erd.x.pipedream.net/${fakeAuthToken}/button-1`, {
     method: "POST",
     body: JSON.stringify({foo: "bar"})
-  })
+  });
 });
 
 document.getElementById("my-button-2").addEventListener("click", () => {
   interceptedFetch(`https://endjetj6u8erd.x.pipedream.net/${fakeAuthToken}/button-2`, {
     method: "POST",
     body: JSON.stringify({foo: "bar"})
-  })
+  });
 });
 
     </script>
